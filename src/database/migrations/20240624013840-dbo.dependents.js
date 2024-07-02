@@ -14,12 +14,10 @@ module.exports = {
 
       name:{
         type: Sequelize.STRING,
-        allowNull:false,
       },
       
       cpf:{
         type: Sequelize.STRING,
-        allowNull:false,
 
       },
 
@@ -29,13 +27,11 @@ module.exports = {
       
       phone:{
         type: Sequelize.STRING,
-        allowNull:false,
 
       },
 
       mail:{
         type: Sequelize.STRING,
-        allowNull:false,
 
       },
 
@@ -52,13 +48,11 @@ module.exports = {
       },
       uuid:{
         type: Sequelize.STRING,
-        allowNull:false
 
       },
 
       status:{
         type: Sequelize.STRING,
-        allowNull:false
       },
 
       state:{
@@ -66,12 +60,10 @@ module.exports = {
       },
       password:{
         type:Sequelize.STRING,
-        allowNull:false
       },
 
       id_plan:{
         type:Sequelize.STRING,
-        allowNull:false
       },
       createdAt: {
         type: Sequelize.DATE,

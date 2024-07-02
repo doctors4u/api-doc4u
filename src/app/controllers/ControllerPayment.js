@@ -198,6 +198,11 @@ class ControllerPayment {
                     const usersPlans = await req.body.dependents
 
                     const promisse = await Promise.all(usersPlans.map(async item => {
+                        
+                        if (!item.nome) {
+                            return null; // Retorna null para ignorar este item
+                        }
+
                         const dependent = await Dependents.create({
 
                             name: item.nome || item.name,
