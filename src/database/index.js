@@ -4,7 +4,7 @@ const sequelize = require("sequelize");
 const Users = require("../app/models/Users")
 
 /* USERS PANEL */
-const UsersPanel = require("../app/models/UsersPanel")
+const UsersPanels = require("../app/models/UsersPanels")
 
 /* CARTS */
 const Carts = require("../app/models/Carts")
@@ -17,18 +17,25 @@ const Plans = require("../app/models/Plans")
 
 const UsersPlans = require("../app/models/UsersPlans")
 const Dependents = require("../app/models/Dependents")
-
+const Schedules = require("../app/models/Schedules")
+const Codes = require("../app/models/Codes")
+const BlackListCodes = require("../app/models/BlackListCodes")
+const BlackLists = require("../app/models/BlackLists")
 
 /*  Connection Database  */
 const connectionDatabase = require("../config/database");
 
 const models = [
-  UsersPanel,
+  UsersPanels,
   Users,
   Carts,
   Plans,
   UsersPlans,
-  Dependents
+  Dependents,
+  Schedules,
+  Codes,
+  BlackLists,
+  BlackListCodes
 ];
 
 class Database {

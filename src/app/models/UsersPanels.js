@@ -1,7 +1,7 @@
 const { Sequelize, Model } = require('sequelize')
 const bcrypt = require("bcrypt")
 
-class UsersPanel extends Model {
+class UsersPanels extends Model {
     static init(sequelize) {
         super.init(
             {
@@ -34,4 +34,4 @@ class UsersPanel extends Model {
     }
 }
 
-module.exports = UsersPanel
+module.exports = UsersPanels

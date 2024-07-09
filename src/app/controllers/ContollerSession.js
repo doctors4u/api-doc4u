@@ -1,4 +1,4 @@
-const StoragePanel = require('../models/UsersPanel')
+const StoragePanel = require('../models/UsersPanels')
 const Users = require('../models/Users')
 
 const jwt = require('jsonwebtoken')
@@ -66,8 +66,11 @@ class ContollerSession {
                     id: user.id,
                     name: user.name,
                     mail:user.mail,
+                    cpf:user.cpf,
+                    phone:user.phone,
                     status:user.status,
-                    uuid:user.uuid
+                    uuid:user.uuid,
+                    clientId:user.uuid_rapidoc
                 },
                 token,
             })

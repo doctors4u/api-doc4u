@@ -1,6 +1,7 @@
 
-const UsersPanel = require('../models/UsersPanel')
+const UsersPanel = require('../models/UsersPanels')
 const Users = require('../models/Users')
+const Dependents = require("../models/Dependents")
 
 const { Op } = require('sequelize');
 
@@ -62,6 +63,23 @@ class ControllerPanel {
 
         }
 
+    }
+    async getAllDependents(req,res){
+        try {
+            const plans = await Dependents.findAll({
+                order: [['id', 'DESC']]  // Ordena por 'nome' em ordem crescente (ASC)
+            });
+
+            if (plans.length > 0) {
+                return res.status(200).json(plans);
+            }
+
+            return res.status(404).json({ message: "Nenhum dependente foi encontrado :(" });
+
+        } catch (error) {
+            console.error(error);
+            return res.status(500).json({ message: "Ops... algo deu errado! :(" });
+        }
     }
     async getUserById(req,res){
 

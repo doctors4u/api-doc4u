@@ -119,7 +119,6 @@ class ControllerPayment {
                 return res.status(404).json({ message: "Plano não existe" })
             }
 
-            console.log("=================")
             const verifyUserExists = await Users.findAll({
                 where: {
                     mail: usersPlans.map(item => item.email)
@@ -143,7 +142,7 @@ class ControllerPayment {
                 "cardholder": {
                     "name": req.body.cardholder,
                     "identification": {
-                        "number": req.body.cpfNumber,
+                        "number": String(req.body.cpfPayment).replace(".", "").replace(".", "").replace("-", ""),
                         "type": "CPF"
                     }
                 },
@@ -151,6 +150,8 @@ class ControllerPayment {
 
 
             })
+
+            console.log(String(req.body.cpfPayment).replace(".", "").replace(".", "").replace("-", ""))
 
             const pricePlan = Number(verifyPlanExists[0].dataValues.price)
 
@@ -182,7 +183,6 @@ class ControllerPayment {
 
                 )
 
-
                 if (payment.status != 201) {
                     console.log(payment.data.error)
                     return res.status(401).json({ message: "Não autorizado" })
@@ -198,15 +198,10 @@ class ControllerPayment {
                     const usersPlans = await req.body.dependents
 
                     const promisse = await Promise.all(usersPlans.map(async item => {
-                        
-                        if (!item.nome) {
-                            return null; // Retorna null para ignorar este item
-                        }
-
                         const dependent = await Dependents.create({
 
                             name: item.nome || item.name,
-                            cpf: item.cpf,
+                            cpf: String(item.cpf).replace(".", "").replace(".", "").replace("-", ""),
                             phone: item.telefone || item.phone,
                             mail: item.email || item.mail,
                             password_hash:item.password_hash,

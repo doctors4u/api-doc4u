@@ -18,6 +18,8 @@ class Dependents extends Model {
                 password:Sequelize.STRING,
                 password_hash:Sequelize.VIRTUAL,
                 uuid:Sequelize.STRING,
+                uuid_rapidoc:Sequelize.STRING,
+                clientId:Sequelize.STRING,
                 status:Sequelize.STRING
                     
             },
